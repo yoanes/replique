@@ -6,3 +6,6 @@ php:
   
 env:
   - DB=mysql
+  
+before_script:
+  - phpenv config-add site.ini
