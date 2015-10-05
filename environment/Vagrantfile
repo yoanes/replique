@@ -15,5 +15,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
        v.name = 'replique-site-base'
      end
    end
- 
+
+  config.vm.define "site", primary: true do |site|
+     site.vm.box = "replique/site"
+     site.vm.box_url = "file://./site.box"
+  end 
 end
