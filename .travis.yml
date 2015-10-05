@@ -9,4 +9,4 @@ env:
   
 before_script:
   - phpenv config-add site.ini
-  - pecl install mbstring
+  - pecl install memcache
