@@ -36,3 +36,13 @@ curl -sS https://getcomposer.org/installer | php -- --install-dir=bin
 
 echo "Add composer to PATH"
 ln -s /opt/work/bin/composer.phar /usr/local/sbin/composer
+
+echo "Install flyway"
+wget -q "https://bintray.com/artifact/download/business/maven/flyway-commandline-3.2.1-linux-x64.tar.gz" -O /tmp/flyway-3.2.1.tgz
+tar xzf /tmp/flyway-3.2.1.tgz -C /usr/local/lib/
+chmod -R 755 /usr/local/lib/flyway-3.2.1/
+ln -s /usr/local/lib/flyway-3.2.1/flyway /usr/bin/flyway
+> /usr/local/lib/flyway-3.2.1/flyway.properties
+
+echo "Create the db schema by default"
+mysql -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS replique DEFAULT CHARACTER SET latin1;"
