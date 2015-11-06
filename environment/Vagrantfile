@@ -6,6 +6,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
+  config.ssh.insert_key = false
+
   config.vm.define "site-provision" do |prov|
      # Every Vagrant virtual environment requires a box to build off of.
      prov.vm.box = "mjp182/CentOS_7"

@@ -4,6 +4,7 @@ task up(type: Exec) {
 }
 
 task destroy(type: Exec) {
+   ignoreExitValue = true
    workingDir = "$projectDir"
    commandLine = ['vagrant', 'destroy', '-f', 'site']  
 }
