@@ -19,7 +19,11 @@ task destroyProvision(type: Exec) {
     commandLine = ['vagrant', 'destroy', '-f', 'site-provision']
 }
 
-task reprovision(dependsOn: ['destroyProvision', 'provision'])
+task deleteBox(type: Delete) {
+ 	delete "$projectDir/site.box"
+}
+
+task reprovision(dependsOn: ['destroyProvision', 'deleteBox', 'provision'])
 
 task packageBox(type: Exec, dependsOn: reprovision){
     workingDir = "$projectDir"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Install basic environment tools"
-yum install -y httpd php php-mbstring php-pdo php-intl php-mysqli wget ftp tar bind-utils telnet git
+yum install -y httpd php php-mbstring php-pdo php-intl php-mysqli php-xml wget ftp tar bind-utils telnet git
 
 echo "Install php mcrypt extension"
 wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm -O /tmp/epel-release-7-5.noarch.rpm
