@@ -59,4 +59,15 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
     }
+    
+    public function returnOK() {
+    	$this->set('response', 'ok');
+    	$this->set('_serialize', 'response');
+    }
+    
+    public function returnGenericError() {
+    	$this->response->statusCode('500');
+    	$this->set('response', "Something went wrong. Please try again later.");
+    	$this->set('_serialize', 'response');
+    }
 }
