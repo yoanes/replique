@@ -17,6 +17,6 @@ CREATE TABLE IF NOT EXISTS `inactives` (
   `id` bigint(10) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(10) NOT NULL,
   `token` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-  FOREIGN_KEY (`user_id`) REFERENCES users(`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES users(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

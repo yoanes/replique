@@ -30,8 +30,10 @@ task packageBox(type: Exec, dependsOn: reprovision){
     commandLine = ['vagrant', 'package', '--base=replique-site-base', '--output=site.box']
 }
 
-task startDevServer(type: Exec) {
+task startDevServer(type: Exec, dependsOn: up) {
     workingDir = "$projectDir"
-    commandLine = ['vagrant', 'ssh', 'site', '-c', '/opt/work/site/bin/cake server -H 0.0.0.0']
+    commandLine = ['vagrant', 'ssh', 'site', '-c', '/home/replique/opt/work/app/bin/cake server -H 0.0.0.0']
 }
+
+task restartDevServer(dependsOn: ['destroy', 'up', 'startDevServer']) {}
 

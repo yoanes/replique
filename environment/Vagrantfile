@@ -21,7 +21,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "site", primary: true do |site|
      site.vm.box = "replique/site"
      site.vm.box_url = "file://./site.box"
-
-     site.vm.synced_folder "../", "/home/replique/opt/work"
+	 site.vm.provision "shell", path: "site.sh"
+	 
+     site.vm.synced_folder "../", "/home/replique/opt/work", owner: "vagrant", group: "vagrant", mount_options: ["dmode=777,fmode=777"]
+     
+     site.vm.network "forwarded_port", guest: 8765, host: 8765
   end 
 end
