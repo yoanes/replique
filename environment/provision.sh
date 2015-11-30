@@ -45,4 +45,4 @@ ln -s /usr/local/lib/flyway-3.2.1/flyway /usr/bin/flyway
 > /usr/local/lib/flyway-3.2.1/flyway.properties
 
 echo "Create the db schema by default"
-mysql -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS replique DEFAULT CHARACTER SET latin1;"
+mysql -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS replique DEFAULT CHARACTER SET utf8;"

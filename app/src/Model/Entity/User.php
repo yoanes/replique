@@ -20,7 +20,7 @@ class User extends Entity {
 	
 	public function setKey() {
 		if(empty($this->key)) {
-			$this->key = uniqid('rk.', true);
+			$this->userkey = uniqid('rk.', true);
 		}
 	}
 	

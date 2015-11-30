@@ -4,6 +4,7 @@ namespace App\Model\Table;
 
 use ArrayObject;
 use App\Model\Entity\User;
+use App\Model\Entity\Inactive;
 use Cake\Event\Event;
 use Cake\ORM\Table;
 use Cake\ORM\RulesChecker;
@@ -12,6 +13,8 @@ use Cake\Validation\Validator;
 class UsersTable extends Table {
 	
 	public function initialize(array $config) {
+		$this->addBehavior('Timestamp');
+		
 		$this->hasOne('Inactives', [
 			'foreignKey' => 'user_id',
 			'dependent' => true
@@ -55,5 +58,16 @@ class UsersTable extends Table {
 	public function beforeSave(Event $event, User $user, ArrayObject $options) {
 		$user->hashPassword();
 		$user->setKey();
+		
+		return true;
+	}
+	
+	public function afterSave(Event $event, User $user, ArrayObject $options) {
+		if($user->isNew()) {
+			$inactive = new Inactive($user->id);
+			$this->Inactives->save($inactive);
+		}
+		
+		return true;
 	}
 }
