@@ -39,6 +39,14 @@ class UsersTable extends Table {
 					'message' => __('Password has to be between 6 and 40 characters long.')
 			]);
 	
+	    $validator 
+	    	->requirePresence('passwordConfirmation', 'create')
+	    	->notEmpty('passwordConfirmation', 'This field cannot be empty.')
+	    	->add('passwordConfirmation', 'equalValue', [
+	    			'rule' => ['compareWith', 'password'],
+	    			'message' => __('Confirmation password doesn\'t match the given password.')
+	    	]);
+	    	
 	    $validator
 	    	->requirePresence('email', 'create')
 	    	->notEmpty('email', 'This field cannot be empty.')
