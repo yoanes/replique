@@ -19,8 +19,8 @@ class User extends Entity {
 	}
 	
 	public function __construct($properties = [], $options = []) {
-		if(!array_key_exists('userkey', $properties)) {
-			$properties['userkey'] = $this->generateUserKey();
+		if(!array_key_exists('key', $properties)) {
+			$properties['key'] = $this->generateUserKey();
 		}
 	
 		parent::__construct($properties, $options);
