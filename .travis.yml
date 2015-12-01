@@ -10,7 +10,7 @@ env:
   
 before_script:
   - phpenv config-add site.ini
-  - cd app
+  - php composer.phar require --dev phpunit/phpunit
 
 script:
   - vendor/bin/phpunit
