@@ -10,6 +10,7 @@ env:
   
 before_script:
   - phpenv config-add site.ini
+  - ls -la /home/travis/.phpenv/versions/5.5/bin/composer
   - php composer.phar require --dev phpunit/phpunit
 
 script:
