@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\ORM\Entity;
 
 /**
  * Application Controller
@@ -42,7 +43,6 @@ class AppController extends Controller
         parent::initialize();
 
         $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
     }
 
     /**
@@ -60,14 +60,19 @@ class AppController extends Controller
         }
     }
     
-    public function returnOK() {
-    	$this->set('response', 'ok');
-    	$this->set('_serialize', 'response');
+    protected function returnOK($statusCode = '200') {
+    	$this->response->statusCode($statusCode);
+    	$this->set([
+    		'ok' => "ok",
+    		'_serialize' => 'ok'
+    	]);
     }
     
-    public function returnGenericError() {
-    	$this->response->statusCode('500');
-    	$this->set('response', "Something went wrong. Please try again later.");
-    	$this->set('_serialize', 'response');
+    protected function returnErrors(Entity $entity, $statusCode = '500') {
+    	$this->response->statusCode($statusCode);
+    	$this->set([
+    		'errors' => $entity->errors(),
+    		'_serialize' => 'errors'
+    	]);
     }
 }

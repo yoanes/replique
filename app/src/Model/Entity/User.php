@@ -30,4 +30,8 @@ class User extends Entity {
 		$password = $this->password;
 		$this->password = md5("--$salt--$password--");
 	}
+	
+	public function isActive() {
+		return empty($this->inactive) ? true : false;
+	}
 }

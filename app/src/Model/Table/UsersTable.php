@@ -78,4 +78,15 @@ class UsersTable extends Table {
 		
 		return true;
 	}
+	
+	public function findByEmail($email = null) {
+		if(empty($email)) {
+			return null;
+		}
+		
+		return $this->find()
+		    		->where(['Users.email' => $email])
+		    		->contain(['Inactives'])
+		    		->first();
+	}
 }

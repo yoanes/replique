@@ -6,16 +6,20 @@ use Cake\ORM\Entity;
 
 class Inactive extends Entity {
 	
-	private function setToken() {
-		if(empty($this->token)) {
-			$this->token = md5(uniqid('replique', true));
-		}
+	private function generateToken() {
+		return md5(uniqid('replique', true));
 	}
 	
-	public function __construct($userId) {
-		parent::__construct();
+	public function __construct($properties = [], $options = []) {
+		if(!array_key_exists('token', $properties)) {
+			$properties['token'] = $this->generateToken();
+		}
 		
-		$this->user_id = $userId;
-		$this->setToken();
+		parent::__construct($properties, $options);
+	}
+	
+	public function isValid() {
+		return empty($this->user) ? false :
+					$this->user->id == $this->user_id ? true : false;
 	}
 }

@@ -11,26 +11,28 @@ class UsersController extends AppController {
 		parent::initialize();
 	}
 	
+	public function index() {
+		$user = $this->Users->findByEmail('test@ccc6.com');
+		
+		var_dump($user->isActive());
+	}
+	
 	public function register() {
 		if($this->request->is('post')) {
 			$newUser = $this->Users->newEntity();
 			$newUser = $this->Users->patchEntity($newUser, $this->request->data);
 
 			if($newUser->errors()) {
-				$this->response->statusCode('412');
-				$this->set('response', $newUser->errors());
-				$this->set('_serialize', 'response');
-				
-				return;
+				$this->returnErrors($newUser, '400');
+ 				return;
 			} 
 			
 			if($this->Users->save($newUser)) {
-				$this->response->statusCode('201');
-				$this->returnOK();
+				$this->returnOK('201');
 			} else {
-				$this->returnGenericError();
-			}
-			
+				$this->log("Failed in creating new user: " . json_encode($newUser->errors()), 'error');
+				$this->returnErrors($newUser);
+			}	
 		}
 	}
 	
