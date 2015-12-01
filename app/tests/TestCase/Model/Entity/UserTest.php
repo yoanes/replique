@@ -13,8 +13,7 @@ class UserTest extends TestCase {
 	}
 	
 	public function testSetKey() {
-		$this->user->setKey();
-		$this->assertNotEquals($this->user->key, null, "Key should be populated.");
+		$this->assertNotEquals($this->user->userkey, null, "Key should be populated.");
 	}
 	
 	public function testHashPassword() {

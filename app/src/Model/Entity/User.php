@@ -18,10 +18,16 @@ class User extends Entity {
 		}
 	}
 	
-	public function setKey() {
-		if(empty($this->key)) {
-			$this->userkey = uniqid('rk.', true);
+	public function __construct($properties = [], $options = []) {
+		if(!array_key_exists('userkey', $properties)) {
+			$properties['userkey'] = $this->generateUserKey();
 		}
+	
+		parent::__construct($properties, $options);
+	}
+	
+	private function generateUserKey() {
+		return uniqid('rk.', true);
 	}
 	
 	public function hashPassword() {

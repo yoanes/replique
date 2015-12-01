@@ -15,7 +15,7 @@ class InactiveTest extends TestCase {
 	}
 
 	public function testNewInactive() {
-		$this->inactive = new Inactive($this->mockUserId);
+		$this->inactive = new Inactive(['user_id' => 1]);
 		
 		$this->assertNotEquals($this->inactive->token, null, "Token should be populated upon instantiation.");
 		$this->assertEquals($this->inactive->user_id, $this->mockUserId, "User Id should be populated.");
