@@ -12,4 +12,4 @@ before_script:
   - phpenv config-add site.ini
 
 script:
-  - cd app && vendor/bin/phpunit
+  - phpunit
