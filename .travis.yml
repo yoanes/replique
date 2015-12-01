@@ -1,12 +1,16 @@
 ---
 
 language: php
+
 php:
-  - 5.4
+  - 5.5
   
 env:
   - DB=mysql
   
 before_script:
   - phpenv config-add site.ini
-  - pecl install mysqli
+  - cd app
+
+script:
+  - vendor/bin/phpunit
