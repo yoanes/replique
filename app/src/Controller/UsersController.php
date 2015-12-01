@@ -36,7 +36,7 @@ class UsersController extends AppController {
 		}
 	}
 	
-	private function sendRegistrationEmail($email, $token) {
+	private function sendRegistrationEmail($email, $token, $username) {
 		$email = new Email('default');
 		
 		try {
@@ -44,8 +44,11 @@ class UsersController extends AppController {
 			      ->emailFormat('html')
 			      ->to($email)
 			      ->subjects('Welcome To Replique Ministry.')
-			      ->template('welcomeContent')
-			      ->viewVars(['token' => $token])
+			      ->template('registration')
+			      ->viewVars([
+			      	'token' => $token,
+			      	'username' => $username
+			      ])
 			      ->send();
 			
 			$this->log("Email sent to $email for new user registration.", 'info');
