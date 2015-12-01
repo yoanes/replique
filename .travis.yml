@@ -10,6 +10,7 @@ env:
   
 before_script:
   - phpenv config-add site.ini
+  - php composer require --dev phpunit/phpunit
 
 script:
   - which composer
