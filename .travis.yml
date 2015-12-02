@@ -11,6 +11,8 @@ env:
 before_script:
   - phpenv config-add site.ini
   - cd app
-
+  - composer self-update
+  - composer install
+  
 script:
   - vendor/bin/phpunit
