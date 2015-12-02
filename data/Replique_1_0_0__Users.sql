@@ -1,5 +1,4 @@
 -- 
-use replique;
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` BIGINT(10) NOT NULL AUTO_INCREMENT,
@@ -7,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` VARCHAR(50) UNIQUE NOT NULL,
   `password` VARCHAR(50) NOT NULL,
   `salt` VARCHAR(50) NOT NULL,
-  `key` VARCHAR(50) NOT NULL DEFAULT '',
+  `private_key` VARCHAR(50) NOT NULL DEFAULT '',
   `created` DATETIME NOT NULL,
   `modified` DATETIME NOT NULL,
   PRIMARY KEY (`id`)

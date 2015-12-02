@@ -15,7 +15,7 @@ class UserTest extends TestCase {
 	}
 	
 	public function testKeyGeneration() {
-		$this->assertNotEquals($this->user->key, null, "Key should be populated on creation.");
+		$this->assertNotEquals($this->user->private_key, null, "Key should be populated on creation.");
 	}
 	
 	public function testHashPassword() {
