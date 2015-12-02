@@ -16,7 +16,7 @@ install:
   - tar xzf /tmp/flyway-3.2.1.tgz -C /usr/local/lib/
   - chmod -R 755 /usr/local/lib/flyway-3.2.1/
   - ln -s /usr/local/lib/flyway-3.2.1/flyway /usr/bin/flyway
-  - > /usr/local/lib/flyway-3.2.1/flyway.properties
+  - echo "" > /usr/local/lib/flyway-3.2.1/flyway.properties
   
 before_script:
   - phpenv config-add site.ini
