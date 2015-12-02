@@ -13,4 +13,4 @@ before_script:
   - cd app && composer install
   
 script:
-  - cd app && vendor/bin/phpunit
+  - ls -la
