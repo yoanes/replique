@@ -23,5 +23,4 @@ before_script:
   - mv config/app.temp.php config/app.php
   
 script:
-  - cat config/app.php
-#  - vendor/bin/phpunit
+  - vendor/bin/phpunit
