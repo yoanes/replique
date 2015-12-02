@@ -10,8 +10,7 @@ env:
   
 before_script:
   - phpenv config-add site.ini
-  - echo 'extension = memcached.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - echo 'extension = mcrypt.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   
 script:
-  - phpunit
+  - phpunit -v app/
