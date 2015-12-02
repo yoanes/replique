@@ -18,8 +18,8 @@ before_script:
   - composer install
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS replique DEFAULT CHARACTER SET utf8;"
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS replique_test DEFAULT CHARACTER SET utf8;"
-  - sed -i 's/username\ \=\>\ my_app/username\ \=\>\ root/g' config/app.php
-  - sed -i 's/database\ \=\>\ my_app/database\ \=\>\ replique/g' config/app.php
+  - sed -i 's/\'username\'\ \=\>\ \'my_app\'/\'username\'\ \=\>\ \'root\'/g' config/app.php
+  - sed -i 's/\'database\'\ \=\>\ \'my_app\'/\'database\'\ \=\>\ \'replique\'/g' config/app.php
   
 script:
   - cat config/app.php
