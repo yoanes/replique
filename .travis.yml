@@ -18,8 +18,8 @@ before_script:
   - composer install
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS replique DEFAULT CHARACTER SET utf8;"
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS replique_test DEFAULT CHARACTER SET utf8;"
-  - sed -i '$ d' config/app.php > config/app.temp.php
-  - cat ../travis.config.php >> config/app.temp.php
+  - sed -i '$ d' config/app.php >> config/app.temp.php
+  - cat ../travis.config.php > config/app.temp.php
   - mv config/app.temp.php config/app.php
   
 script:
