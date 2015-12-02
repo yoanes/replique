@@ -18,7 +18,6 @@ install:
   - echo "" > "$TRAVIS_BUILD_DIR/flyway-3.2.1/flyway.properties"
   
 before_script:
-  -
   - phpenv config-add site.ini
   - cd app
   - composer self-update
