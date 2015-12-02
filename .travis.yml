@@ -13,11 +13,12 @@ services:
   
 install:
   - wget -q "https://bintray.com/artifact/download/business/maven/flyway-commandline-3.2.1-linux-x64.tar.gz" -O /tmp/flyway-3.2.1.tgz
-  - tar xzf /tmp/flyway-3.2.1.tgz -C ~
-  - chmod -R 755 ~/flyway-3.2.1/
-  - echo "" > ~/flyway-3.2.1/flyway.properties
+  - tar xzf /tmp/flyway-3.2.1.tgz -C $TRAVIS_BUILD_DIR
+  - chmod -R 755 $TRAVIS_BUILD_DIR/flyway-3.2.1/
+  - echo "" > $TRAVIS_BUILD_DIR/flyway-3.2.1/flyway.properties
   
 before_script:
+  -
   - phpenv config-add site.ini
   - cd app
   - composer self-update
@@ -25,8 +26,8 @@ before_script:
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS replique DEFAULT CHARACTER SET utf8;"
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS replique_test DEFAULT CHARACTER SET utf8;"
   - mv config/app.travis.php config/app.php
-  - ~/flyway migrate -url="jdbc:mysql://localhost:3306/replique" -user=root -locations="filesystem:~/data" -sqlMigrationPrefix="Replique_"
-  - ~/flyway migrate -url="jdbc:mysql://localhost:3306/replique_test" -user=root -locations="filesystem:~/data" -sqlMigrationPrefix="Replique_"
+  - $TRAVIS_BUILD_DIR/flyway migrate -url="jdbc:mysql://localhost:3306/replique" -user=root -locations="filesystem:~/data" -sqlMigrationPrefix="Replique_"
+  - $TRAVIS_BUILD_DIR/flyway migrate -url="jdbc:mysql://localhost:3306/replique_test" -user=root -locations="filesystem:~/data" -sqlMigrationPrefix="Replique_"
   
 script:
   - vendor/bin/phpunit
