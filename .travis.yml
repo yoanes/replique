@@ -26,8 +26,8 @@ before_script:
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS replique DEFAULT CHARACTER SET utf8;"
   - mysql -uroot -e "CREATE DATABASE IF NOT EXISTS replique_test DEFAULT CHARACTER SET utf8;"
   - mv config/app.travis.php config/app.php
-  - $TRAVIS_BUILD_DIR/flyway migrate -url="jdbc:mysql://localhost:3306/replique" -user=root -locations="filesystem:~/data" -sqlMigrationPrefix="Replique_"
-  - $TRAVIS_BUILD_DIR/flyway migrate -url="jdbc:mysql://localhost:3306/replique_test" -user=root -locations="filesystem:~/data" -sqlMigrationPrefix="Replique_"
+  - $TRAVIS_BUILD_DIR/flyway migrate -url="jdbc:mysql://localhost:3306/replique" -user=root -locations="filesystem:$TRAVIS_BUILD_DIR/data" -sqlMigrationPrefix="Replique_"
+  - $TRAVIS_BUILD_DIR/flyway migrate -url="jdbc:mysql://localhost:3306/replique_test" -user=root -locations="filesystem:$TRAVIS_BUILD_DIR/data" -sqlMigrationPrefix="Replique_"
   
 script:
   - vendor/bin/phpunit
