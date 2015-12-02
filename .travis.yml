@@ -12,10 +12,10 @@ services:
   - mysql
   
 install:
-  - echo $TRAVIS_BUILD_DIR
   - wget -q "https://bintray.com/artifact/download/business/maven/flyway-commandline-3.2.1-linux-x64.tar.gz" -O /tmp/flyway-3.2.1.tgz
   - tar xzf /tmp/flyway-3.2.1.tgz -C $TRAVIS_BUILD_DIR
   - chmod -R 755 $TRAVIS_BUILD_DIR/flyway-3.2.1/
+  - ln -s $TRAVIS_BUILD_DIR/flyway-3.2.1/flyway $TRAVIS_BUILD_DIR/flyway
   - echo "" > $TRAVIS_BUILD_DIR/flyway-3.2.1/flyway.properties
   
 before_script:
