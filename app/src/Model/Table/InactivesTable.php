@@ -20,7 +20,7 @@ class InactivesTable extends Table {
 		return $this->find()
 		            ->where(['Inactives.token' => $token])
 		            ->contain(['Users' => function($q) {
-		            	return $q->select(['id', 'username']);
+		            	return $q->select(['id', 'username', 'email']);
 		            }])
 		            ->first();
 	}

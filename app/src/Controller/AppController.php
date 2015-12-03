@@ -28,7 +28,8 @@ use Cake\ORM\Entity;
  */
 class AppController extends Controller
 {
-
+	protected $homeUrl = 'http://repliqueministry.org';
+	
     /**
      * Initialization hook method.
      *
@@ -50,6 +51,8 @@ class AppController extends Controller
         			'finder' => 'auth'
         		]
         	],
+        	'loginRedirect' => $this->homeUrl,
+        	'logoutRedirect' => $this->homeUrl,
         	'storage' => 'Session'
         ]);
     }

@@ -15,6 +15,10 @@ class InactivesFixture extends TestFixture {
 			[
 				'user_id' => 1,
 				'token' => 'abcdef12345'
+			],
+			[ 
+				'user_id' => 2,
+				'token' => 'invalid_token_nonexistent_user'
 			]
 		];
 
