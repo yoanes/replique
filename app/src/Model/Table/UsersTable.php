@@ -61,6 +61,7 @@ class UsersTable extends Table {
 	
 	public function buildRules(RulesChecker $rules) {
 		$rules->add($rules->isUnique(['email'], 'Supplied email already taken.'));
+		$rules->add($rules->isUnique(['username'], 'Supplied username already taken.'));
 		return $rules;
 	}
 	
