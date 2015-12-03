@@ -43,6 +43,15 @@ class AppController extends Controller
         parent::initialize();
 
         $this->loadComponent('RequestHandler');
+        $this->loadComponent('Auth', [
+        	'authenticate' => [
+        		'Form' => [
+        			'fields' => ['username' => 'email', 'password' => 'password'],
+        			'finder' => 'auth'
+        		]
+        	],
+        	'storage' => 'Session'
+        ]);
     }
 
     /**

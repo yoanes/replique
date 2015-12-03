@@ -3,6 +3,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Auth\DefaultPasswordHasher;
 
 class User extends Entity {
 	
@@ -11,12 +12,6 @@ class User extends Entity {
 		'password' => true,
 		'email' => true
 	];
-	
-	private function setSalt() {
-		if(empty($this->salt)) {
-			$this->salt = uniqid('', true);
-		}
-	}
 	
 	public function __construct($properties = [], $options = []) {
 		if(!array_key_exists('private_key', $properties)) {
@@ -30,14 +25,21 @@ class User extends Entity {
 		return uniqid('rk.', true);
 	}
 	
-	public function hashPassword() {
-		$this->setSalt();
-		$salt = $this->salt;
-		$password = $this->password;
-		$this->password = md5("--$salt--$password--");
+	public function _setPassword($password) {
+		if(!empty($password)) {
+			return (new DefaultPasswordHasher)->hash($password);
+		}
 	}
 	
 	public function isActive() {
 		return empty($this->inactive) ? true : false;
+	}
+	
+	public function _getToken() {
+		if(!$this->isActive()) {
+			return $this->inactive->token;
+		} 
+		
+		return null;
 	}
 }

@@ -18,17 +18,19 @@ class UserTest extends TestCase {
 		$this->assertNotEquals($this->user->private_key, null, "Key should be populated on creation.");
 	}
 	
-	public function testHashPassword() {
-		$this->user->hashPassword("password");
-		$this->assertNotEquals($this->user->salt, null, "Salt should be populated.");
-		$this->assertNotEquals($this->user->password, 'password', "Password should be hashed.");
-	}
-	
 	public function testIsActive() {
 		$this->assertEquals($this->user->isActive(), false, "Inactive user since it hasn't been activated.");
 		
 		#activate user by deleting inactive record.
 		$this->user->inactive = null;
 		$this->assertEquals($this->user->isActive(), true, "Active user since it has been activated.");
+	}
+	
+	public function testGetToken() {
+		$this->assertNotEquals($this->user->token, null, "Token should be populated for inactive user.");
+		
+		#activate user by deleting inactive record.
+		$this->user->inactive = null;
+		$this->assertEquals($this->user->token, null, "Token should be null for activated user.");
 	}
 }

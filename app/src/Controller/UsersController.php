@@ -4,18 +4,24 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\Email;
 
 class UsersController extends AppController {
 	
 	public function initialize() {
 		parent::initialize();
 	}
-	
-	public function index() {
-		$user = $this->Users->findByEmail('test@ccc6.com');
-		
-		var_dump($user->isActive());
+
+	public function beforeFilter(Event $event) {
+		parent::beforeFilter($event);
+		$this->Auth->allow('register');		
 	}
+
+// 	public function index() {
+// 		$user = $this->Users->findByEmail('test@ccc6.com');
+		
+// 		var_dump($user->isActive());
+// 	}
 	
 	public function register() {
 		if($this->request->is('post')) {
@@ -28,6 +34,7 @@ class UsersController extends AppController {
 			} 
 			
 			if($this->Users->save($newUser)) {
+				$this->sendRegistrationEmail($newUser->email, $newUser->token, $newUser->username);
 				$this->returnOK('201');
 			} else {
 				$this->log("Failed in creating new user: " . json_encode($newUser->errors()), 'error');
@@ -36,14 +43,14 @@ class UsersController extends AppController {
 		}
 	}
 	
-	private function sendRegistrationEmail($email, $token, $username) {
+	private function sendRegistrationEmail($useremail, $token, $username) {
 		$email = new Email('default');
 		
 		try {
 			$email->from(['noreply@repliqueministry.org' => 'Replique Ministry Auto Reply'])
 			      ->emailFormat('html')
-			      ->to($email)
-			      ->subjects('Welcome To Replique Ministry.')
+			      ->to($useremail)
+			      ->subject('Welcome To Replique Ministry.')
 			      ->template('registration')
 			      ->viewVars([
 			      	'token' => $token,
@@ -51,10 +58,13 @@ class UsersController extends AppController {
 			      ])
 			      ->send();
 			
-			$this->log("Email sent to $email for new user registration.", 'info');
+			$this->log("Email sent to $useremail for new user registration.", 'info');
 		} catch(Exception $e) {
 			$this->log("User Registration failed to send confirmation email. Exceptions: " . $e->getMessage(), 'error');
 		}
+	}
+	
+	public function login() {
 		
 	}
 }

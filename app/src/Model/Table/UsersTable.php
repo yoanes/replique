@@ -8,6 +8,7 @@ use App\Model\Entity\Inactive;
 use Cake\Event\Event;
 use Cake\ORM\Table;
 use Cake\ORM\RulesChecker;
+use Cake\ORM\Query;
 use Cake\Validation\Validator;
 
 class UsersTable extends Table {
@@ -63,17 +64,12 @@ class UsersTable extends Table {
 		return $rules;
 	}
 	
-	public function beforeSave(Event $event, User $user, ArrayObject $options) {
-		$user->hashPassword();
-		$user->setKey();
-		
-		return true;
-	}
-	
 	public function afterSave(Event $event, User $user, ArrayObject $options) {
 		if($user->isNew()) {
-			$inactive = new Inactive($user->id);
+			$inactive = new Inactive(['user_id' => $user->id]);
 			$this->Inactives->save($inactive);
+			# on save, populate user's inactive property
+			$user->inactive = $inactive;
 		}
 		
 		return true;
@@ -88,5 +84,14 @@ class UsersTable extends Table {
 		    		->where(['Users.email' => $email])
 		    		->contain(['Inactives'])
 		    		->first();
+	}
+	
+	public function findAuth(Query $query, array $options) {
+		$query
+			->select(['id', 'username', 'password'])
+			->contain(['Inactives'])
+			->where(['Inactives' => NULL]);
+			
+		return $query;
 	}
 }

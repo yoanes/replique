@@ -19,13 +19,20 @@ task destroyProvision(type: Exec) {
     commandLine = ['vagrant', 'destroy', '-f', 'site-provision']
 }
 
-task deleteBox(type: Delete) {
+task deleteBoxFile(type: Delete) {
  	delete "$projectDir/site.box"
 }
 
-task reprovision(dependsOn: ['destroyProvision', 'deleteBox', 'provision'])
+task deleteBoxCache(type: Exec) {
+    ignoreExitValue = true
+    workingDir = "$projectDir"
+    commandLine = ['vagrant', 'box', 'remove', '-f', 'replique/site']
+}
 
-task packageBox(type: Exec, dependsOn: reprovision){
+task deleteBox(dependsOn: ['deleteBoxFile', 'deleteBoxCache'])
+task reprovisionBox(dependsOn: ['destroyProvision', 'destroy', 'deleteBox', 'provision'])
+
+task packageBox(type: Exec, dependsOn: reprovisionBox){
     workingDir = "$projectDir"
     commandLine = ['vagrant', 'package', '--base=replique-site-base', '--output=site.box']
 }
@@ -35,5 +42,5 @@ task startDevServer(type: Exec, dependsOn: up) {
     commandLine = ['vagrant', 'ssh', 'site', '-c', '/home/replique/opt/work/app/bin/cake server -H 0.0.0.0']
 }
 
-task restartDevServer(dependsOn: ['destroy', 'up', 'startDevServer']) {}
+task restartDevServer(dependsOn: ['destroy', 'up', 'startDevServer'])
 
