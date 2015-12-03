@@ -17,7 +17,7 @@ class InactivesController extends AppController {
 
 		if(empty($inactive)) {
 			$this->log("User with Token : $token is not found.", "info");
-			throw new NotFoundException("Token not found.");
+			throw new NotFoundException("Resource not found.");
 		}
 		
 		if($inactive->isValid()) {
