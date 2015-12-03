@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Network\Exception\NotFoundException;
+use Cake\Network\Exception\InternalErrorException;
 
 class InactivesController extends AppController {
 	
@@ -20,14 +21,18 @@ class InactivesController extends AppController {
 		}
 		
 		if($inactive->isValid()) {
-			if($this->Inactives->delete($inactive)) {
+			$user = $this->inactive->user;
 			
+			if($this->Inactives->delete($inactive)) {
+				// Log user in automatically
+				$this->Auth->setUser($user->toArray());
+				
 				// Ideally this will redirect to the login or index page. But since UI is not completed yet, 
 				// we return 200 ok
 				$this->returnOK('200');
 			} else {
 				$this->log("Failure in activating user account with token: $token.", "error");
-				$this->returnErrors($inactive);
+				throw new InternalErrorException('Failure in activating user.');
 			}
 		}
 	}

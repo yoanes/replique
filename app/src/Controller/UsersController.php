@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Mailer\Email;
+use Cake\Network\Exception\BadRequestException;
+use Cake\Network\Exception\InternalErrorException;
 
 class UsersController extends AppController {
 	
@@ -38,7 +40,7 @@ class UsersController extends AppController {
 				$this->returnOK('201');
 			} else {
 				$this->log("Failed in creating new user: " . json_encode($newUser->errors()), 'error');
-				$this->returnErrors($newUser);
+				throw new InternalErrorException("Failure in registering user.");
 			}	
 		}
 	}
@@ -64,7 +66,15 @@ class UsersController extends AppController {
 		}
 	}
 	
-	public function login() {
-		
+	public function login($url) {
+		if($this->request->is('post')) {
+			$user = $this->Auth->identify();
+			if($user) {
+				$this->Auth->setUser($user);
+				$this->returnOK();
+			} else {
+				throw new BadRequestException("Credential supplied is invalid.");
+			}
+		}
 	}
 }
