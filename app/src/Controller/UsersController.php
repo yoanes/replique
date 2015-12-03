@@ -6,7 +6,6 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Mailer\Email;
 use Cake\Network\Exception\BadRequestException;
-use Cake\Network\Exception\InternalErrorException;
 
 class UsersController extends AppController {
 	
@@ -40,7 +39,7 @@ class UsersController extends AppController {
 				$this->returnOK('201');
 			} else {
 				$this->log("Failed in creating new user: " . json_encode($newUser->errors()), 'error');
-				throw new InternalErrorException("Failure in registering user.");
+				$this->returnErrors($newUser, '400');
 			}	
 		}
 	}
