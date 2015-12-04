@@ -8,6 +8,16 @@ class UsersControllerTest extends IntegrationTestCase {
 
 	public $fixtures = ['app.users', 'app.inactives'];
 	
+	public function setup() {
+		parent::setup();
+		
+		// set all initial request to json
+		// further json request will need to be declared in the method
+		$this->configRequest([
+			'headers' => ['Accept' => 'application/json']
+		]);
+	}
+	
 	public function testRegisterSuccessful() {
 		
 		$data = [
@@ -16,10 +26,6 @@ class UsersControllerTest extends IntegrationTestCase {
 			'passwordConfirmation' => 'password',
 			'email' => 'test789@example.com'
 		];
-		
-		$this->configRequest([
-			'headers' => ['Accept' => 'application/json']
-		]);
 		
 		$this->post('/users/register', $data);
 		$this->assertResponseOk();
@@ -35,10 +41,6 @@ class UsersControllerTest extends IntegrationTestCase {
 			'email' => 'test789example.com'
 		];
 	
-		$this->configRequest([
-			'headers' => ['Accept' => 'application/json']
-		]);
-	
 		$this->post('/users/register', $data);
 		$this->assertResponseCode('400');
 		$this->assertResponseContains('Confirmation password');
@@ -53,10 +55,6 @@ class UsersControllerTest extends IntegrationTestCase {
 			'passwordConfirmation' => 'password',
 			'email' => 'testuser1@test.com'
 		];
-		
-		$this->configRequest([
-			'headers' => ['Accept' => 'application/json']
-		]);
 
 		$this->post('/users/register', $data);
 		$this->assertResponseCode('400');
@@ -70,10 +68,6 @@ class UsersControllerTest extends IntegrationTestCase {
 			'password' => 'password'
 		];
 		
-		$this->configRequest([
-			'headers' => ['Accept' => 'application/json']
-		]);
-		
 		$this->post('/users/login', $data);
 		$this->assertResponseOk();
 		$this->assertResponseEquals("\"ok\"");
@@ -86,10 +80,6 @@ class UsersControllerTest extends IntegrationTestCase {
 			'password' => 'password'
 		];
 	
-		$this->configRequest([
-			'headers' => ['Accept' => 'application/json']
-		]);
-	
 		$this->post('/users/login', $data);
 		$this->assertResponseCode('400');
 		$this->assertResponseContains('Credential supplied is invalid.');
@@ -101,20 +91,12 @@ class UsersControllerTest extends IntegrationTestCase {
 			'password' => 'password'
 		];
 	
-		$this->configRequest([
-			'headers' => ['Accept' => 'application/json']
-		]);
-	
 		$this->post('/users/login', $data);
 		$this->assertResponseCode('400');
 		$this->assertResponseContains('Credential supplied is invalid.');
 	}
 	
-	public function testLogoutWhenUserNotLoggedIn() {
-		$this->configRequest([
-			'headers' => ['Accept' => 'application/json']
-		]);
-		
+	public function testLogoutWhenUserNotLoggedIn() {		
 		$this->get('/users/logout');
 		
 		$this->assertResponseOk();
@@ -127,10 +109,6 @@ class UsersControllerTest extends IntegrationTestCase {
 			'email' => 'testuser3@test.com',
 			'password' => 'password'
 		];
-		
-		$this->configRequest([
-			'headers' => ['Accept' => 'application/json']
-		]);
 		
 		$this->post('/users/login', $data);
 		$this->assertSession(3, 'Auth.User.id');
@@ -145,5 +123,13 @@ class UsersControllerTest extends IntegrationTestCase {
 		$this->assertResponseOk();
 		$this->assertResponseEquals("\"ok\"");
 		$this->assertSession(null, 'Auth.User.id');
+	}
+	
+	public function testResetPasswordRequest() {
+		$data = ['email' => 'testuser3@test.com'];
+		
+		$this->post('/users/resetPasswordRequest', $data);
+		$this->assertResponseOk();
+		$this->assertResponseEquals("\"ok\"");
 	}
 }

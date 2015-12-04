@@ -15,11 +15,11 @@ class InactivesControllerTest extends IntegrationTestCase {
 		
 		$this->get('/inactives/activate/invalid_token_nonexistent_user');
 		$this->assertResponseCode('404');
-		$this->assertResponseContains('Resource not found.');
+		$this->assertResponseContains('Not Found');
 		
 		$this->get('/inactives/activate/nonexistent_token');
 		$this->assertResponseCode('404');
-		$this->assertResponseContains('Resource not found.');
+		$this->assertResponseContains('Not Found');
 	}
 	
 	public function testActivate() {

@@ -6,6 +6,8 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Mailer\Email;
 use Cake\Network\Exception\BadRequestException;
+use Cake\Network\Exception\InternalErrorException;
+use Cake\Network\Exception\NotFoundException;
 
 class UsersController extends AppController {
 	
@@ -15,15 +17,9 @@ class UsersController extends AppController {
 
 	public function beforeFilter(Event $event) {
 		parent::beforeFilter($event);
-		$this->Auth->allow(['register', 'login', 'logout']);		
+		$this->Auth->allow(['register', 'login', 'logout', 'resetPasswordRequest', 'resetPassword']);		
 	}
 
-// 	public function index() {
-// 		$user = $this->Users->findByEmail('test@ccc6.com');
-		
-// 		var_dump($user->isActive());
-// 	}
-	
 	public function register() {
 		if($this->request->is('post')) {
 			$newUser = $this->Users->newEntity();
@@ -65,6 +61,28 @@ class UsersController extends AppController {
 		}
 	}
 	
+	private function sendResetPasswordEmail($useremail, $token, $username) {
+		$email = new Email('default');
+		
+		try {
+			$email->from(['noreply@repliqueministry.org' => 'Replique Ministry Auto Reply'])
+			      ->emailFormat('html')
+			      ->to($useremail)
+			      ->subject('Replique Ministry Password Reset Request')
+			      ->template('password_reset')
+			      ->viewVars([
+			      	'token' => $token,
+			      	'username' => $username
+			      ])
+			      ->send();
+			
+			$this->log("Email sent to $useremail for new password reset.", 'info');
+		} catch(Exception $e) {
+			$this->log("Password reset failed to send confirmation email. Exceptions: " . $e->getMessage(), 'error');
+			throw new InternalErrorException();
+		}
+	}
+	
 	public function login() {
 		if($this->request->is('post')) {
 			$user = $this->Auth->identify();
@@ -81,5 +99,30 @@ class UsersController extends AppController {
 	public function logout() {
 		$this->Auth->logout();
 		$this->returnOK();
+	}
+	
+	public function resetPasswordRequest() {
+		if($this->request->is('post')) {
+			$email = $this->request->data['email'];
+
+			$user = $this->Users->findByEmail($email);
+			if($user) {
+				$resetPwdToken = $user->generateResetPasswordToken();
+				if($resetPwdToken) {
+					$this->sendResetPasswordEmail($user->email, $resetPwdToken, $user->username);
+					$this->returnOK();
+				} else {
+					$this->log("Reset password token generation failed for email: $email", "error");
+					throw new BadRequestException("User not allowed to reset password.");
+				}
+			} else {
+				throw new NotFoundException();
+			}
+			
+		}
+	}
+	
+	public function resetPassword($email, $token) {
+		
 	}
 }

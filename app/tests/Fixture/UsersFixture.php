@@ -27,7 +27,7 @@ class UsersFixture extends TestFixture {
 				'username' => 'testuser3',
 				'email' => 'testuser3@test.com',
 				'password' => (new DefaultPasswordHasher)->hash('password'),
-				'private_key' => uniqid('rk.', true),
+				'private_key' => uniqid('rk.', true) . "." . uniqid('', true),
 				'created' => date('Y-m-d H:i:s'),
 				'modified' => date('Y-m-d H:i:s')
 			]		
