@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` VARCHAR(50) UNIQUE NOT NULL,
   `email` VARCHAR(50) UNIQUE NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  `private_key` VARCHAR(50) NOT NULL DEFAULT '',
+  `private_key` VARCHAR(100) NOT NULL DEFAULT '',
   `created` DATETIME NOT NULL,
   `modified` DATETIME NOT NULL,
   PRIMARY KEY (`id`)

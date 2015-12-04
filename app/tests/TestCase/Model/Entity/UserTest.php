@@ -33,4 +33,25 @@ class UserTest extends TestCase {
 		$this->user->inactive = null;
 		$this->assertEquals($this->user->token, null, "Token should be null for activated user.");
 	}
+	
+	public function testGenerateResetPasswordToken() {
+		$this->assertEquals($this->user->generateResetPasswordToken(), false, "Inactive user should not be able to reset password.");
+		
+		// activate user
+		$this->user->inactive = null;
+		$token = $this->user->generateResetPasswordToken();
+		$this->assertNotEquals($token, false, "Reset password token should be generated.");
+	}
+	
+	public function testValidateResetPasswordToken() {
+		// activate user and generate the token
+		$this->user->inactive = null;
+		$token = $this->user->generateResetPasswordToken();
+		
+		// validate a real token. In generic user's scenario, urldecode() will be performed by the browser
+		$this->assertEquals($this->user->validateResetPasswordToken(urldecode($token)), true, "Token validation should return true.");
+		
+		// empty token should return false
+		$this->assertEquals($this->user->validateResetPasswordToken(), false, "Empty token must return false.");
+	}
 }
