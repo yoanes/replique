@@ -71,6 +71,7 @@ class UsersController extends AppController {
 			      ->subject('Replique Ministry Password Reset Request')
 			      ->template('password_reset')
 			      ->viewVars([
+			        'useremail' => $useremail,
 			      	'token' => $token,
 			      	'username' => $username
 			      ])

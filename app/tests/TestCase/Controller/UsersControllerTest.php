@@ -125,11 +125,27 @@ class UsersControllerTest extends IntegrationTestCase {
 		$this->assertSession(null, 'Auth.User.id');
 	}
 	
-	public function testResetPasswordRequest() {
+	public function testResetPasswordRequestSuccessful() {
 		$data = ['email' => 'testuser3@test.com'];
 		
 		$this->post('/users/resetPasswordRequest', $data);
 		$this->assertResponseOk();
 		$this->assertResponseEquals("\"ok\"");
+	}
+	
+	public function testResetPasswordRequestFailureForNonExistentUser() {
+		$data = ['email' => 'nonexistentuser@test.com'];
+		
+		$this->post('/users/resetPasswordRequest', $data);
+		$this->assertResponseCode('404');
+		$this->assertResponseContains('Not Found');
+	}
+	
+	public function testResetPasswordRequestFailureForInactiveUser() {
+		$data = ['email' => 'testuser1@test.com'];
+	
+		$this->post('/users/resetPasswordRequest', $data);
+		$this->assertResponseCode('400');
+		$this->assertResponseContains('User not allowed to reset password.');
 	}
 }
