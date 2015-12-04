@@ -29,10 +29,10 @@ class UsersControllerTest extends IntegrationTestCase {
 	public function testRegisterWithValidationErrors() {
 	
 		$data = [
-				'username' => 'test789',
-				'password' => 'password',
-				'passwordConfirmation' => 'password_typo',
-				'email' => 'test789example.com'
+			'username' => 'test789',
+			'password' => 'password',
+			'passwordConfirmation' => 'password_typo',
+			'email' => 'test789example.com'
 		];
 	
 		$this->configRequest([
@@ -48,10 +48,10 @@ class UsersControllerTest extends IntegrationTestCase {
 	public function testRegisterWithDuplicateEntry() {
 		
 		$data = [
-				'username' => 'testuser1',
-				'password' => 'password',
-				'passwordConfirmation' => 'password',
-				'email' => 'testuser1@test.com'
+			'username' => 'testuser1',
+			'password' => 'password',
+			'passwordConfirmation' => 'password',
+			'email' => 'testuser1@test.com'
 		];
 		
 		$this->configRequest([
@@ -62,5 +62,88 @@ class UsersControllerTest extends IntegrationTestCase {
 		$this->assertResponseCode('400');
 		$this->assertResponseContains('Supplied email already taken.');
 		$this->assertResponseContains('Supplied username already taken.');
+	}
+	
+	public function testLoginSuccessful() {
+		$data = [
+			'email' => 'testuser3@test.com',
+			'password' => 'password'
+		];
+		
+		$this->configRequest([
+			'headers' => ['Accept' => 'application/json']
+		]);
+		
+		$this->post('/users/login', $data);
+		$this->assertResponseOk();
+		$this->assertResponseEquals("\"ok\"");
+		$this->assertSession(3, 'Auth.User.id');
+	}
+	
+	public function testLoginFailureForInactiveUser() {
+		$data = [
+			'email' => 'testuser1@test.com',
+			'password' => 'password'
+		];
+	
+		$this->configRequest([
+			'headers' => ['Accept' => 'application/json']
+		]);
+	
+		$this->post('/users/login', $data);
+		$this->assertResponseCode('400');
+		$this->assertResponseContains('Credential supplied is invalid.');
+	}
+	
+	public function testLoginFailureForNonExistentUser() {
+		$data = [
+			'email' => 'nonexistentuser@test.com',
+			'password' => 'password'
+		];
+	
+		$this->configRequest([
+			'headers' => ['Accept' => 'application/json']
+		]);
+	
+		$this->post('/users/login', $data);
+		$this->assertResponseCode('400');
+		$this->assertResponseContains('Credential supplied is invalid.');
+	}
+	
+	public function testLogoutWhenUserNotLoggedIn() {
+		$this->configRequest([
+			'headers' => ['Accept' => 'application/json']
+		]);
+		
+		$this->get('/users/logout');
+		
+		$this->assertResponseOk();
+		$this->assertResponseEquals("\"ok\"");
+	}
+	
+	public function testLogoutAfterUserLoggedIn() {
+		// log user in first
+		$data = [
+			'email' => 'testuser3@test.com',
+			'password' => 'password'
+		];
+		
+		$this->configRequest([
+			'headers' => ['Accept' => 'application/json']
+		]);
+		
+		$this->post('/users/login', $data);
+		$this->assertSession(3, 'Auth.User.id');
+		
+		// and test the logout
+		$this->configRequest([
+			'headers' => ['Accept' => 'application/json']
+		]);
+		
+		$this->get('/users/logout');
+		
+		$this->assertResponseOk();
+		$this->assertResponseEquals("\"ok\"");
+		$this->assertSession(null, 'Auth.User.id');
 	}
 }

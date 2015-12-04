@@ -15,7 +15,7 @@ class UsersController extends AppController {
 
 	public function beforeFilter(Event $event) {
 		parent::beforeFilter($event);
-		$this->Auth->allow('register');		
+		$this->Auth->allow(['register', 'login', 'logout']);		
 	}
 
 // 	public function index() {
@@ -65,9 +65,10 @@ class UsersController extends AppController {
 		}
 	}
 	
-	public function login($url) {
+	public function login() {
 		if($this->request->is('post')) {
 			$user = $this->Auth->identify();
+
 			if($user) {
 				$this->Auth->setUser($user);
 				$this->returnOK();
@@ -75,5 +76,10 @@ class UsersController extends AppController {
 				throw new BadRequestException("Credential supplied is invalid.");
 			}
 		}
+	}
+	
+	public function logout() {
+		$this->Auth->logout();
+		$this->returnOK();
 	}
 }

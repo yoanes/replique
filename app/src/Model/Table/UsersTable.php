@@ -91,7 +91,7 @@ class UsersTable extends Table {
 		$query
 			->select(['id', 'username', 'password'])
 			->contain(['Inactives'])
-			->where(['Inactives' => NULL]);
+			->where(['Inactives.user_id IS' => NULL]);
 			
 		return $query;
 	}
