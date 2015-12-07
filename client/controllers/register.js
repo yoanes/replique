@@ -1,14 +1,16 @@
 angular.module('replique')
-.constant('baseUrl', '/users/register')
-.controller('registerCtrl', function($scope, $http, baseUrl) {
+.constant('targetUrl', '/users/register')
+.constant('requestMethod', 'POST')
+.controller('registerCtrl', function($scope, $http, targetUrl, requestMethod) {
   $scope.registerTest = 'Hello Register!';
 
   $scope.responseStatusCode = 'INITIAL_VALUE';
+  $scope.requestMethod = requestMethod;
 
   $scope.register = function(newUser) {
     $http({
-      url: baseUrl,
-      method: 'POST',
+      url: targetUrl,
+      method: requestMethod,
       headers: { 'Content-Type': 'application/json' },
       data: newUser
     })
