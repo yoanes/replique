@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="replique">
+<head>
+  <title>Replique - Indonesian Church in Australia :: Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Indonesian interdenominational church in Australia">
+  <meta name="keywords" content="indonesian church, australia, melbourne, brisbane, jakarta, church, indonesia, australia, replique">
+  <link rel="icon" href="./favicon.ico">
+  <style type="text/css">
+    img.wp-smiley,
+    img.emoji {
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 .07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
+    }
+  </style>
+  <link rel="stylesheet" id="bootstrap-css" href="./bootstrap4.3.1.css" type="text/css" media="all">
+  <link rel="stylesheet" id="flexslider-css" href="./flexslider4.3.1.css" type="text/css" media="all">
+  <link rel="stylesheet" id="fabthemes-style-css" href="./style.css" type="text/css" media="all">
+
+<!--
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="pingback" href="http://demo.fabthemes.com/malaka/xmlrpc.php">
+  <link rel="alternate" type="application/rss+xml" title="Malaka » Feed" href="http://demo.fabthemes.com/malaka/feed/">
+  <link rel="alternate" type="application/rss+xml" title="Malaka » Comments Feed" href="http://demo.fabthemes.com/malaka/comments/feed/">
+-->
+<!--
+  <script type="text/javascript">
+      window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/demo.fabthemes.com\/malaka\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.3.1"}};
+      !function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+  </script>
+  <script src="http://demo.fabthemes.com/malaka/wp-includes/js/wp-emoji-release.min.js?ver=4.3.1" type="text/javascript"></script>
+-->
+  <link rel="stylesheet" id="fontawesome-css" href="http://cdn.demo.fabthemes.com/malaka/wp-content/themes/Malaka/css/font-awesome.css?ver=4.3.1" type="text/css" media="all">
+  <link rel="stylesheet" id="fancybox-css" href="http://cdn.demo.fabthemes.com/malaka/wp-content/themes/Malaka/css/jquery.fancybox.css?ver=4.3.1" type="text/css" media="all">
+  <link rel="stylesheet" id="theme-css" href="http://cdn.demo.fabthemes.com/malaka/wp-content/themes/Malaka/theme.css?ver=4.3.1" type="text/css" media="all">
+  <link rel="stylesheet" id="custom-css" href="http://demo.fabthemes.com/malaka/wp-content/themes/Malaka/css/custom.php?ver=4.3.1" type="text/css" media="all">
+  <link rel="stylesheet" id="responsive-css" href="http://cdn.demo.fabthemes.com/malaka/wp-content/themes/Malaka/css/responsive.css?ver=4.3.1" type="text/css" media="all">
+  
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="http://cdn.demo.fabthemes.com/malaka/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script>
+  
+  <script src="angular.min.js"></script>
+  <script src="ngmodules/angular-resource.min.js"></script>
+  <script src="ngmodules/angular-route.min.js"></script>
+  <script src="controllers/replique.js"></script>
+  <script src="controllers/mainContent.js"></script>
+  <script src="controllers/register.js"></script>
+  
+<!--
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://demo.fabthemes.com/malaka/xmlrpc.php?rsd">
+  <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://cdn.demo.fabthemes.com/malaka/wp-includes/wlwmanifest.xml"> 
+  <meta name="generator" content="WordPress 4.3.1">
+  <link rel="canonical" href="http://demo.fabthemes.com/malaka/">
+  <link rel="shortlink" href="http://demo.fabthemes.com/malaka/">
+-->
+<!--
+  <style type="text/css">.fancybox-margin{margin-right:17px;}</style>
+-->
+</head>
+
+<body class="home page page-id-79 page-template page-template-homepage page-template-homepage-php" ng-controller="repliqueCtrl">
+
+<!-- Login/Register Section -->
+<div id="member">
+  <form method="post" action="/new/users/login">
+    <p><label for="email">Email</label> <input type="text" id="email" name="email" maxlength="50" size="40" /></p>
+    <p><label for="password">Password</label> <input type="password" id="password" name="password" maxlength="50" /></p>
+    <!--<input type="submit" value="Login" class="btn btn-primary">-->
+    <button type="submit" class="btn btn-sm btn-primary">Login</button>
+  </form>
+  <p>|</p>
+  <a href="#/register" class="btn-md btn-secondary">Register</a>
+</div>
+<!-- Login/Register Section Ends -->
+
+
+<div id="page" class="hfeed site">
+  <header id="masthead" class="site-header" role="banner">
+    <div class="container">
+      <div class="row"> 
+        <div class="col-md-4">
+          <div class="site-branding">
+            <h1 class="site-title"><a href="#/replique" rel="home">Replique</a></h1>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <nav id="site-navigation" class="main-navigation" role="navigation">
+            <div class="menu-menu-1-container">
+              <ul id="malaka" class="menu l_tinynav1">
+                <li id="menu-item-82" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-79 current_page_item menu-item-82"><a href="http://demo.fabthemes.com/malaka/">Home</a></li>
+                <li id="menu-item-83" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83"><a href="http://demo.fabthemes.com/malaka/about/">About</a>
+                  <ul class="sub-menu">
+                    <li id="menu-item-87" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-87"><a href="http://demo.fabthemes.com/malaka/sample-page/">Sample Page</a></li>
+                  </ul>
+                </li>
+                <li id="menu-item-84" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="http://demo.fabthemes.com/malaka/blog/">Blog</a></li>
+                <li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85"><a href="http://demo.fabthemes.com/malaka/events/">Events</a></li>
+                <li id="menu-item-88" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="http://demo.fabthemes.com/malaka/sermons/">Sermons</a></li>
+                <li id="menu-item-89" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89"><a href="http://demo.fabthemes.com/malaka/services/">Services</a></li>
+              </ul>
+              <!--
+              <select id="tinynav1" class="tinynav tinynav1">
+                <option>Navigation</option>
+                <option value="http://demo.fabthemes.com/malaka/">Home</option>
+                <option value="http://demo.fabthemes.com/malaka/about/">About</option>
+                <option value="http://demo.fabthemes.com/malaka/sample-page/">- Sample Page</option>
+                <option value="http://demo.fabthemes.com/malaka/blog/">Blog</option>
+                <option value="http://demo.fabthemes.com/malaka/events/">Events</option>
+                <option value="http://demo.fabthemes.com/malaka/sermons/">Sermons</option>
+                <option value="http://demo.fabthemes.com/malaka/services/">Services</option>
+              </select>
+              -->
+            </div>        
+          </nav><!-- #site-navigation -->
+        </div>
+      </div>
+    </div>
+  </header><!-- #masthead -->
+
+  
+  <ng-view />
+
+  
+  <div id="footer-widgets" class="clearfix">
+    <div class="container"> <div class="row"> 
+      <aside id="text-2" class="widget widget_text col-md-4"><h3 class="footer-widget-title"><span>About the theme</span></h3>      <div class="textwidget"><p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed</p>
+</div>
+    </aside><aside id="archives-2" class="widget widget_archive col-md-4"><h3 class="footer-widget-title"><span>Archives</span></h3>    <ul>
+  <li><a href="http://demo.fabthemes.com/malaka/2015/04/">April 2015</a></li>
+  <li><a href="http://demo.fabthemes.com/malaka/2012/06/">June 2012</a></li>
+    </ul>
+</aside>    <aside id="recent-posts-2" class="widget widget_recent_entries col-md-4">    <h3 class="footer-widget-title"><span>Recent Posts</span></h3>    <ul>
+          <li>
+        <a href="http://demo.fabthemes.com/malaka/2015/04/20/hello-world/">Hello world!</a>
+            </li>
+          <li>
+        <a href="http://demo.fabthemes.com/malaka/2012/06/11/ut-commodo-ante-quis-arcu-fringilla-eget/">Ut commodo ante quis arcu fringilla eget</a>
+            </li>
+          <li>
+        <a href="http://demo.fabthemes.com/malaka/2012/06/11/pellentesque-quis-ultricies-lorem/">Pellentesque quis ultricies lorem</a>
+            </li>
+          <li>
+        <a href="http://demo.fabthemes.com/malaka/2012/06/11/praesent-porttitor-ultricies/">Praesent porttitor ultricies</a>
+            </li>
+          <li>
+        <a href="http://demo.fabthemes.com/malaka/2012/06/11/fusce-elit-orci-lobortis-vel-mollis/">Fusce elit orci, lobortis vel mollis</a>
+            </li>
+        </ul>
+    </aside>    </div></div>
+  </div>
+
+  <footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="container"><div class="row"> 
+      <div class="col-md-12">
+        <div class="site-info">
+        Copyright © 2015 <a href="http://demo.fabthemes.com/malaka" title="Malaka">Malaka</a> - Just another demo Sites site <br>
+        <!-- label::footer -->
+      </div><!-- .site-info -->
+    </div>
+    </div></div>
+  </footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Content Delivery Network via cdn.demo.fabthemes.com
+
+ Served from: demo.fabthemes.com @ 2015-11-10 04:29:47 by W3 Total Cache -->
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
