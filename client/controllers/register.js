@@ -24,4 +24,25 @@ angular.module('replique')
     );
   }
 })
+.directive('passwordConfirmation', function() {
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+            if(!ngModel) return;
+            
+            var validate = function() {
+              var val1 = ngModel.$viewValue;
+              console.log(val1);
+              var val2 = attrs.passwordConfirmation;
+              console.log(val2);
+              ngModel.$setValidity('passwordConfirmation', val1 === val2 || !val1 || !val2);
+            };
+
+            scope.$watch(attrs.ngModel, function() { validate(); });            
+            scope.$observe('passwordConfirmation', function() { validate(); });
+            
+          }
+  };
+})
 ;

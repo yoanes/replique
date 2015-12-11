@@ -93,12 +93,6 @@ div#member * {
   display: inline-block;
 }
 
-#userRegistrationForm {
-  width: 50em;
-  padding-left: 2em;
-  margin: auto;
-}
-
 div.preview {
   position: relative;
   height: 5.2em;

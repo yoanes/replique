@@ -1,11 +1,35 @@
+<style>
+  #userRegistrationForm {
+    width: 90%;
+    margin: auto;
+  }
+
+  #userRegistrationForm input.ng-dirty.ng-invalid { background-color: lightpink; }
+  
+  #userRegistrationForm input.ng-dirty.ng-valid { background-color: lightgreen; }
+</style>
+
 <div id="userRegistrationForm" ng-controller="registerCtrl">
-<form id="userRegistrationForm" accept-charset="utf-8" ng-submit="register(newUser)">
-  <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
+<form id="userRegistrationForm" name='userRegistrationForm' ng-submit="register(newUser)" novalidate role='form'>
   <br/>
-  <label for="username">Username</label><br/><input type="text" name="username" id="username" required maxlength="50" size="60" ng-model='newUser.username' /><br/><br/>
-  <label for="email">Email address</label><br/><input type="email" name="email" id="email" required maxlength="50" size="60" ng-model='newUser.email' /><br/><br/>
-  <label for="password">Password</label><br/><input type="password" name="password" id="password" required maxlength="50" size="30" ng-model='newUser.password' /><br/><br/>
-  <label for="passwordConfirmation">Confirm your password</label><br/><input type="password" name="passwordConfirmation" id="passwordConfirmation" required maxlength="50" size="30" ng-model='newUser.passwordConfirmation' /><br/><br/>
+  <div class='form-group'>
+    <label for='registerUsername'>Username</label>
+    <input class='form-control' id='registerUsername' maxlength='50' name='registerUsername' ng-model='data.newUser.username' placeholder='Please enter your username' required type='text' />
+  </div>
+  <div class='form-group'>
+    <label for='registerEmail'>Email address</label>
+    <input class='form-control' id='registerEmail' maxlength='50' name='registerEmail' ng-model='data.newUser.email' placeholder='Please enter your email address' required type='email' />
+  </div>
+  <div class='form-group'>
+    <label for='registerPassword'>Password</label>
+    <input class='form-control' id='registerPassword' maxlength='50' name='registerPassword' ng-model='data.newUser.password' password-confirmation='{{data.newUser.passwordConfirmation}}' placeholder='Please enter your password' required type='password' />
+  </div>
+  <div class='form-group'>
+    <label for='registerPasswordConfirmation'>Confirm your password</label>
+    <input class='form-control' id='registerPasswordConfirmation' maxlength='50' name='registerPasswordConfirmation' ng-model='data.newUser.passwordConfirmation' password-confirmation='{{data.newUser.password}}' placeholder='Please confirm your passord' required type='password' ui-validate='"$value===data.newUser.password"' ui-validate-watch='"data.newUser.password"' />
+  </div>
+  
+  
 	<noscript>
 		&lt;div&gt;&lt;label for="UserSecurityCode"&gt;Please enter the sum of 7 + 4&lt;/label&gt;&lt;input name="data[User][security_code]" type="text" id="UserSecurityCode" /&gt;&lt;/div&gt;
 	</noscript>
@@ -18,7 +42,9 @@
   <div id="beacon_05b555ae6f" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="https://as.areyouahuman.com/www/delivery/lg.php?bannerid=10&amp;campaignid=4&amp;zoneid=1&amp;loc=1&amp;referer=http%3A%2F%2Fwww.repliqueministry.org%2Fnew%2Fusers%2Fregister&amp;cb=05b555ae6f" width="0" height="0" alt="" style="width: 0px; height: 0px;">
   </div>
   <script type="text/javascript" src="https://d.adroll.com/ipixel/LBVW5LMDU5BY7PGA5ZDQ24/C77VWIVMEZCYNDARZPX3ML?name=control"></script>
-  <div class="submit"><input type="submit" value="Register">
+  <br/>
+  <div>
+    <button class='btn btn-primary' ng-disabled='userRegistrationForm.$invalid' type='submit'>Register</button>
   </div>
 </form>
 </div>
