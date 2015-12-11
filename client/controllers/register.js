@@ -33,14 +33,21 @@ angular.module('replique')
             
             var validate = function() {
               var val1 = ngModel.$viewValue;
-              console.log(val1);
+console.log(val1);
               var val2 = attrs.passwordConfirmation;
-              console.log(val2);
+console.log(val2);
               ngModel.$setValidity('passwordConfirmation', val1 === val2 || !val1 || !val2);
             };
 
-            scope.$watch(attrs.ngModel, function() { validate(); });            
-            scope.$observe('passwordConfirmation', function() { validate(); });
+            scope.$watch(attrs.ngModel, function() {
+              validate();
+console.log('watcher');
+            });
+            
+            attrs.$observe('passwordConfirmation', function() {
+              validate();
+console.log('observer\n\r----------');
+            });
             
           }
   };
