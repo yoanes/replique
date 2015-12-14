@@ -6,7 +6,6 @@ describe('Register Test', function() {
   var validUser = { username: 'username1', email: 'email1@email.com', password: 'password1', passwordConfirmation: 'password1' };
   var invalidUser = {};
   
-  var passwordConfirmationScope;
   var formPasswordAndConfirmation;
   
   beforeEach(angular.mock.module('replique'));
@@ -17,10 +16,8 @@ describe('Register Test', function() {
     backend = $httpBackend;
   }));
 
-  beforeEach(angular.mock.inject(function($compile, $rootScope) {
-    passwordConfirmationScope = $rootScope.$new()
-    
-    passwordConfirmationScope.model = {
+  beforeEach(angular.mock.inject(function($compile) {
+    mockScope.model = {
       data: { newUser: { 
         password: null,
         passwordConfirmation: null
@@ -34,8 +31,8 @@ describe('Register Test', function() {
       + "</form>"
     );
     
-    var compiledPasswordAndConfirmation = $compile(elementPasswordAndConfirmation)(passwordConfirmationScope);
-    formPasswordAndConfirmation = passwordConfirmationScope.formPasswordAndConfirmation;
+    var compiledPasswordAndConfirmation = $compile(elementPasswordAndConfirmation)(mockScope);
+    formPasswordAndConfirmation = mockScope.formPasswordAndConfirmation;
   }));
 
   it('should receive response status code 201 when user data is all correct', function() {
@@ -55,7 +52,7 @@ describe('Register Test', function() {
   it('should set password confirmation to valid when it matches the password', function() {
     formPasswordAndConfirmation.registerPassword.$setViewValue('c');
     formPasswordAndConfirmation.registerPasswordConfirmation.$setViewValue('c');
-    passwordConfirmationScope.$digest();
+    mockScope.$digest();
     console.log(formPasswordAndConfirmation.registerPassword.$viewValue);
     console.log(formPasswordAndConfirmation.registerPasswordConfirmation.$viewValue);
     expect(formPasswordAndConfirmation.registerPasswordConfirmation.$valid).toBe(true);
@@ -64,7 +61,7 @@ describe('Register Test', function() {
   it('should set password confirmation to invalid when it does not match the password', function() {
     formPasswordAndConfirmation.registerPassword.$setViewValue('c');
     formPasswordAndConfirmation.registerPasswordConfirmation.$setViewValue('d');
-    passwordConfirmationScope.$digest();
+    mockScope.$digest();
     console.log(formPasswordAndConfirmation.registerPassword.$viewValue);
     console.log(formPasswordAndConfirmation.registerPasswordConfirmation.$viewValue);
     expect(formPasswordAndConfirmation.registerPasswordConfirmation.$valid).toBe(false);
