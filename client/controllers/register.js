@@ -22,7 +22,7 @@ angular.module('replique')
         $scope.responseStatusCode = response.status;
       }
     );
-  }
+  };
 })
 .directive('passwordConfirmation', function() {
   return {

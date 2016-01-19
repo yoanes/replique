@@ -91,10 +91,10 @@
   <form id='userLoginForm' name='userLoginForm' ng-submit='login(currentUser)' novalidate role='form'>
     <div>
       <label for="loginEmail">Email</label>
-      <input id="loginEmail" name="loginEmail" maxlength="50" required size="35" type="email" /></div>
+      <input id="loginEmail" maxlength="50" name="loginEmail" ng-model='data.currentUser.email' required size="35" type="email" /></div>
     <div>
       <label for="loginPassword">Password</label>
-      <input id="loginPassword" name="loginPassword" maxlength="50" required type="password" /></div>
+      <input id="loginPassword" maxlength="50" name="loginPassword" ng-model='data.currentUser.password' required type="password" /></div>
     <button class='btn btn-sm btn-primary' ng-disabled='userLoginForm.$invalid' type='submit'>Login</button>
   </form>
   <p>|</p>
