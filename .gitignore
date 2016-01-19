@@ -1,3 +1,4 @@
 environment/.vagrant/
 environment/site.box
 client*OLD*
+.composer
