@@ -1,17 +1,20 @@
 angular.module('replique')
-.constant('targetUrl', '/users/register')
-.constant('requestMethod', 'POST')
-.controller('registerCtrl', function($scope, $http, targetUrl, requestMethod) {
+.constant('registerUrl', 'http://localhost:8765/users/register')
+.constant('registerRequestMethod', 'POST')
+.controller('registerCtrl', function($scope, $http, registerUrl, registerRequestMethod) {
   $scope.registerTest = 'Hello Register!';
 
   $scope.responseStatusCode = 'INITIAL_VALUE';
-  $scope.requestMethod = requestMethod;
 
   $scope.register = function(newUser) {
+    ////var manualData = {'username' : 'test789', 'email' : 'test789@example.com', 'password' : 'password', 'passwordConfirmation' : 'password'};
+    ////newUser = manualData;
+    ////alert(newUser['email']);
     $http({
-      url: targetUrl,
-      method: requestMethod,
-      headers: { 'Content-Type': 'application/json' },
+      url: registerUrl,
+      method: registerRequestMethod,
+      //headers: { 'Content-Type': 'application/json' },
+      //headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       data: newUser
     })
     .then(
@@ -19,6 +22,7 @@ angular.module('replique')
         $scope.responseStatusCode = response.status;
       },
       function errorCallback(response) {
+        alert(response.data);
         $scope.responseStatusCode = response.status;
       }
     );

@@ -4,20 +4,29 @@ angular.module('replique', ['ngRoute'])
   $routeProvider.otherwise({ templateUrl: './views/mainContent.html' });
   //$routeProvider.otherwise({ templateUrl: './views/register.html' });
 })
-//.constant('dataUrl', 'http://localhost:5500/products')
-.constant('targetUrl', '/users/login')
-.constant('requestMethod', 'POST')
-.controller('repliqueCtrl', function ($scope, $http, targetUrl, requestMethod) {
+
+.config(['$httpProvider', function ($httpProvider) {
+  //$httpProvider.defaults.useXDomain = true;
+  //delete $httpProvider.defaults.headers.common["X-Requested-With"];
+  //$httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+  //$httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+  //$httpProvider.defaults.headers.common = {};
+  $httpProvider.defaults.headers.post = {};
+}])
+
+.constant('loginUrl', 'http://localhost:8765/users/login')
+.constant('loginRequestMethod', 'POST')
+.controller('repliqueCtrl', function ($scope, $http, loginUrl, loginRequestMethod) {
   $scope.repliqueTest = 'Hello Replique!';
 
   $scope.responseStatusCode = 'INITIAL_VALUE';
-  $scope.requestMethod = requestMethod;
 
   $scope.login = function(currentUser) {
     $http({
-      url: targetUrl,
-      method: requestMethod,
-      headers: { 'Content-Type': 'application/json' },
+      url: loginUrl,
+      method: loginRequestMethod,
+      //headers: { 'Content-Type': 'application/json' },
+      //headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       data: currentUser
     })
     .then(
@@ -29,20 +38,5 @@ angular.module('replique', ['ngRoute'])
       }
     );    
   };
-  /*
-  $scope.data = {
-    products: [
-    { name: 'Product #1', description: 'A product', category: 'Category #1', price: 100 },
-    { name: 'Product #2', description: 'A product', category: 'Category #1', price: 110 },
-    { name: 'Product #3', description: 'A product', category: 'Category #2', price: 210 },
-    { name: 'Product #4', description: 'A product', category: 'Category #3', price: 202 },
-    ]
-  }
-  */
-  //$scope.data = {};
-
-  //$http.get(dataUrl)
-  //.success(function (data) { $scope.data.products = data; })
-  //.error(function (error) { $scope.data.error = error; });
 })
 ;

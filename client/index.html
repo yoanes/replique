@@ -88,7 +88,7 @@
   <!--
   <form method="post" action="/new/users/login">
   -->
-  <form id='userLoginForm' name='userLoginForm' ng-submit='login(currentUser)' novalidate role='form'>
+  <form id='userLoginForm' name='userLoginForm' ng-submit='login(data.currentUser)' novalidate role='form'>
     <div>
       <label for="loginEmail">Email</label>
       <input id="loginEmail" maxlength="50" name="loginEmail" ng-model='data.currentUser.email' required size="35" type="email" /></div>
