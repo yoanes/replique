@@ -5,6 +5,9 @@ angular.module('replique')
   $scope.registerTest = 'Hello Register!';
 
   $scope.responseStatusCode = 'INITIAL_VALUE';
+  
+  // $scope.registerRequestMethod below is required to pass karma test.
+  $scope.registerRequestMethod = registerRequestMethod;
 
   $scope.register = function(newUser) {
     ////var manualData = {'username' : 'test789', 'email' : 'test789@example.com', 'password' : 'password', 'passwordConfirmation' : 'password'};

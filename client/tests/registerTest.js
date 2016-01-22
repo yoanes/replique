@@ -36,14 +36,14 @@ describe('Register Test', function() {
   }));
 
   it('should receive response status code 201 when user data is all correct', function() {
-    backend.expect(mockScope.requestMethod, controller.targetUrl, validUser).respond(201, '');
+    backend.expect(mockScope.registerRequestMethod, controller.registerUrl, validUser).respond(201, '');
     mockScope.register(validUser);
     backend.flush();
     expect(mockScope.responseStatusCode).toEqual(201);
   });
   
   it('should receive response status code 400 when user data is not correct', function() {
-    backend.expect(mockScope.requestMethod, controller.targetUrl, invalidUser).respond(400, '');
+    backend.expect(mockScope.registerRequestMethod, controller.registerUrl, invalidUser).respond(400, '');
     mockScope.register(invalidUser);
     backend.flush();
     expect(mockScope.responseStatusCode).toEqual(400);

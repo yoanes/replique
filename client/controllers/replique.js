@@ -21,6 +21,9 @@ angular.module('replique', ['ngRoute'])
 
   $scope.responseStatusCode = 'INITIAL_VALUE';
 
+  // $scope.registerRequestMethod below is required to pass karma test.
+  $scope.loginRequestMethod = loginRequestMethod;
+
   $scope.login = function(currentUser) {
     $http({
       url: loginUrl,

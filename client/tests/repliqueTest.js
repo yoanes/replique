@@ -15,14 +15,14 @@ describe('Login Test', function() {
   }));
 
   it('should receive response status code 200 when user data is all correct', function() {
-    backend.expect(mockScope.requestMethod, controller.targetUrl, validLogin).respond(200, '');
+    backend.expect(mockScope.loginRequestMethod, controller.loginUrl, validLogin).respond(200, '');
     mockScope.login(validLogin);
     backend.flush();
     expect(mockScope.responseStatusCode).toEqual(200);
   });
   
   it('should receive response status code 400 when user login is not correct', function() {
-    backend.expect(mockScope.requestMethod, controller.targetUrl, invalidLogin).respond(400, '');
+    backend.expect(mockScope.loginRequestMethod, controller.loginUrl, invalidLogin).respond(400, '');
     mockScope.login(invalidLogin);
     backend.flush();
     expect(mockScope.responseStatusCode).toEqual(400);
