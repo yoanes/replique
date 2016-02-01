@@ -17,6 +17,7 @@ angular.module('replique')
       url: registerUrl,
       method: registerRequestMethod,
       //headers: { 'Content-Type': 'application/json' },
+      headers: { 'Accept': 'application/json' },
       //headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       data: newUser
     })
@@ -25,7 +26,8 @@ angular.module('replique')
         $scope.responseStatusCode = response.status;
       },
       function errorCallback(response) {
-        alert(response.data);
+        //alert(response.data);
+        alert(JSON.stringify(response.data, null, 4));
         $scope.responseStatusCode = response.status;
       }
     );

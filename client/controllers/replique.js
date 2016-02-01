@@ -29,6 +29,7 @@ angular.module('replique', ['ngRoute'])
       url: loginUrl,
       method: loginRequestMethod,
       //headers: { 'Content-Type': 'application/json' },
+      headers: { 'Accept': 'application/json' },
       //headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       data: currentUser
     })
@@ -37,6 +38,8 @@ angular.module('replique', ['ngRoute'])
         $scope.responseStatusCode = response.status;
       },
       function errorCallback(response) {
+        //alert(response.data);
+        alert(JSON.stringify(response.data, null, 4));
         $scope.responseStatusCode = response.status;
       }
     );    
