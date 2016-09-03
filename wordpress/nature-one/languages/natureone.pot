@@ -1,0 +1,621 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SKT Natureone\n"
+"POT-Creation-Date: 2015-02-16 15:58+0530\n"
+"PO-Revision-Date: 2015-02-16 15:58+0530\n"
+"Last-Translator: SKT Themes <support@sktthemes.com>\n"
+"Language-Team: SKT Themes <support@sktthemes.com>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+
+#: 404.php:14
+msgid "<strong>404</strong> Not Found"
+msgstr ""
+
+#: 404.php:17
+msgid ""
+"Looks like you have taken a wrong turn.....<br />Don't worry... it happens "
+"to the best of us."
+msgstr ""
+
+#: comments.php:36
+#: comments.php:56
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:37
+#: comments.php:57
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:38
+#: comments.php:58
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: content-page.php:15
+#: content-single.php:27
+#: content.php:38
+#: image.php:59
+#: inc/template-tags.php:278
+msgid "Pages:"
+msgstr ""
+
+#: content-page.php:20
+#: content-single.php:39
+#: content.php:72
+#: image.php:33
+#: image.php:65
+#: inc/template-tags.php:70
+#: inc/template-tags.php:89
+#: inc/template-tags.php:285
+msgid "Edit"
+msgstr ""
+
+#: content.php:31
+msgid "Read More &raquo;"
+msgstr ""
+
+#: content.php:35
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: content.php:49
+#: content.php:59
+msgid ", "
+msgstr ""
+
+#: content.php:53
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: content.php:63
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#: content.php:69
+msgid "Leave a comment"
+msgstr ""
+
+#: content.php:69
+msgid "1 Comment"
+msgstr ""
+
+#: content.php:69
+msgid "% Comments"
+msgstr ""
+
+#: footer.php:14
+msgid "About Us"
+msgstr ""
+
+#: footer.php:19
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas "
+"ornare elit ut molestie. Phasellus posuere interdum tellus, sit amet "
+"interdum lectus rutrum at. Nunc suscipit erat ut eros consequat, at bibendum "
+"sapien convallis. Donec ut gravida velit. Curabitur non ultrices lorem. "
+"Quisque aliquet leo felis, vitae posuere purus blandit vitae. Fusce vitae "
+"tincidunt enim, in efficitur justo. Morbi euismod orci non magna malesuada "
+"commodo."
+msgstr ""
+
+#: footer.php:27
+msgid "Clients Testimonials"
+msgstr ""
+
+#: footer.php:32
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas "
+"ornare elit ut molestie. Phasellus posuere interdum tellus, sit amet "
+"interdum lectus rutrum at. Nunc suscipit erat ut eros consequat, at bibendum "
+"sapien convallis. Donec ut gravida velit. Curabitur non ultrices lorem. "
+"Quisque aliquet leo felis, vitae posuere purus blandit vitae."
+msgstr ""
+
+#: footer.php:42
+msgid " Copyright 2014 All Rights Reserved to Nature One "
+msgstr ""
+
+#: footer.php:45
+msgid "Professional WordPress Themes"
+msgstr ""
+
+#: functions.php:46
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:49
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:62
+msgid "Blog Sidebar"
+msgstr ""
+
+#: functions.php:63
+msgid "Appears on blog page sidebar"
+msgstr ""
+
+#: functions.php:72
+msgid "Page Sidebar"
+msgstr ""
+
+#: functions.php:73
+msgid "Appears on inner pages"
+msgstr ""
+
+#: header.php:30
+msgid "Natureone WordPress Theme"
+msgstr ""
+
+#: header.php:31
+msgid ""
+"Go to Appearance > Theme Options > Restore Defaults to setup the homepage"
+msgstr ""
+
+#: header.php:107
+#: options.php:742
+msgid "Logo"
+msgstr ""
+
+#: header.php:121
+msgid "Menu"
+msgstr ""
+
+#: image.php:23
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\">%4$s &times; %5$s</a> in <a "
+"href=\"%6$s\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+
+#: image.php:38
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr ""
+
+#: image.php:39
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: index.php:57
+msgid "Dummy Title"
+msgstr ""
+
+#: index.php:58
+msgid "Go to Appearance >> Theme Options >> Homepage Content."
+msgstr ""
+
+#: index.php:75
+#: index.php:94
+#: index.php:113
+#: index.php:132
+msgid "Read More"
+msgstr ""
+
+#: index.php:141
+msgid "Recent Work"
+msgstr ""
+
+#: index.php:191
+msgid "Whats New?"
+msgstr ""
+
+#: index.php:198
+msgid "Read More..."
+msgstr ""
+
+#: no-results.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: no-results.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: no-results.php:23
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: no-results.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: options.php:738
+msgid "Basic Settings"
+msgstr ""
+
+#: options.php:743
+msgid "Upload your main logo here"
+msgstr ""
+
+#: options.php:750
+msgid "Favicon"
+msgstr ""
+
+#: options.php:751
+msgid "Upload favicon for website"
+msgstr ""
+
+#: options.php:758
+msgid "Copyright Text"
+msgstr ""
+
+#: options.php:759
+msgid "Copyright text for footer."
+msgstr ""
+
+#: options.php:765
+msgid "Color Scheme"
+msgstr ""
+
+#: options.php:766
+msgid "Select color for theme"
+msgstr ""
+
+#: options.php:774
+msgid "Homepage Content"
+msgstr ""
+
+#: options.php:778
+msgid "Feature Box 1"
+msgstr ""
+
+#: options.php:779
+msgid "Select page for first feature box"
+msgstr ""
+
+#: options.php:786
+msgid "Feature Box 2"
+msgstr ""
+
+#: options.php:787
+msgid "Select page for second feature box"
+msgstr ""
+
+#: options.php:794
+msgid "Feature Box 3"
+msgstr ""
+
+#: options.php:795
+msgid "Select page for first third box"
+msgstr ""
+
+#: options.php:802
+msgid "Feature Box 4"
+msgstr ""
+
+#: options.php:803
+msgid "Select page for first fourth box"
+msgstr ""
+
+#: options.php:810
+msgid "Recent Work Title"
+msgstr ""
+
+#: options.php:811
+msgid "Add recent work title"
+msgstr ""
+
+#: options.php:818
+msgid "Recent Work Section"
+msgstr ""
+
+#: options.php:819
+msgid "Select page for first recent work featured image"
+msgstr ""
+
+#: options.php:826
+msgid "Select page for second recent work featured image"
+msgstr ""
+
+#: options.php:833
+msgid "Select page for third recent work featured image"
+msgstr ""
+
+#: options.php:840
+msgid "Blog Section"
+msgstr ""
+
+#: options.php:841
+msgid "Add blog heading"
+msgstr ""
+
+#: options.php:848
+msgid "Select number of blogs to display in homepage"
+msgstr ""
+
+#: options.php:859
+msgid "Homepage Slider"
+msgstr ""
+
+#: options.php:863
+msgid "Slider Image 1"
+msgstr ""
+
+#: options.php:864
+msgid "First Slide"
+msgstr ""
+
+#: options.php:871
+#: options.php:892
+#: options.php:913
+msgid "Title"
+msgstr ""
+
+#: options.php:877
+#: options.php:898
+#: options.php:919
+msgid "Description or Tagline"
+msgstr ""
+
+#: options.php:884
+msgid "Slider Image 2"
+msgstr ""
+
+#: options.php:885
+msgid "Second Slide"
+msgstr ""
+
+#: options.php:905
+msgid "Slider Image 3"
+msgstr ""
+
+#: options.php:906
+msgid "Third Slide"
+msgstr ""
+
+#: options.php:927
+msgid "Footer"
+msgstr ""
+
+#: options.php:931
+msgid "About Text"
+msgstr ""
+
+#: options.php:932
+msgid "About content here."
+msgstr ""
+
+#: options.php:940
+msgid "Testimonial"
+msgstr ""
+
+#: options.php:941
+msgid "Testimonial content here."
+msgstr ""
+
+#: options.php:950
+#: inc/includes/class-options-framework-admin.php:208
+msgid "Our Themes"
+msgstr ""
+
+#: options.php:954
+msgid ""
+"SKT Nature One WordPress theme has been Designed and Created by SKT Themes."
+msgstr ""
+
+#: options.php:958
+#: inc/includes/class-options-framework-admin.php:188
+msgid "Buy PRO version for only $30 with more features."
+msgstr ""
+
+#: search.php:15
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: sidebar.php:15
+msgid "Archives"
+msgstr ""
+
+#: sidebar.php:21
+msgid "Meta"
+msgstr ""
+
+#: inc/custom-functions.php:50
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: inc/custom-functions.php:52
+msgid "Categories: "
+msgstr ""
+
+#: inc/customizer.php:18
+msgid "Natureone Front Page Options"
+msgstr ""
+
+#: inc/customizer.php:29
+msgid "Front Page: Featured Page One"
+msgstr ""
+
+#: inc/customizer.php:41
+msgid "Front Page: Featured Page Two"
+msgstr ""
+
+#: inc/customizer.php:53
+msgid "Front Page: Featured Page Three"
+msgstr ""
+
+#: inc/customizer.php:65
+msgid "Front Page: Featured Page Four"
+msgstr ""
+
+#: inc/template-tags.php:33
+msgid "Post navigation"
+msgstr ""
+
+#: inc/template-tags.php:43
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: inc/template-tags.php:47
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: inc/template-tags.php:70
+msgid "Pingback:"
+msgstr ""
+
+#: inc/template-tags.php:93
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/template-tags.php:184
+#, php-format
+msgid ""
+"<span class=\"posted-on\">Published %1$s</span><span class=\"byline\"> by "
+"%2$s</span>"
+msgstr ""
+
+#: inc/includes/class-options-framework-admin.php:85
+#: inc/includes/class-options-framework-admin.php:86
+msgid "Theme Options"
+msgstr ""
+
+#: inc/includes/class-options-framework-admin.php:200
+msgid "Click OK to reset. Any theme settings will be lost!"
+msgstr ""
+
+#: inc/includes/class-options-framework-admin.php:214
+msgid "Need more features?"
+msgstr ""
+
+#: inc/includes/class-options-framework-admin.php:216
+msgid "Buy PRO version for only $30 with more features"
+msgstr ""
+
+#: inc/includes/class-options-framework-admin.php:220
+msgid "Documentation"
+msgstr ""
+
+#: inc/includes/class-options-framework-admin.php:222
+msgid "For documentation and support check this link"
+msgstr ""
+
+#: inc/includes/class-options-framework-admin.php:254
+msgid "Default options restored."
+msgstr ""
+
+#: inc/includes/class-options-framework-admin.php:308
+msgid "Options saved."
+msgstr ""
+
+#: inc/includes/class-options-media-uploader.php:55
+msgid "No file chosen"
+msgstr ""
+
+#: inc/includes/class-options-media-uploader.php:58
+#: inc/includes/class-options-media-uploader.php:111
+msgid "Upload"
+msgstr ""
+
+#: inc/includes/class-options-media-uploader.php:60
+#: inc/includes/class-options-media-uploader.php:112
+msgid "Remove"
+msgstr ""
+
+#: inc/includes/class-options-media-uploader.php:63
+msgid "Upgrade your version of WordPress for full media support."
+msgstr ""
+
+#: inc/includes/class-options-media-uploader.php:87
+msgid "View File"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:311
+msgid "No Repeat"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:312
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:313
+msgid "Repeat Vertically"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:314
+msgid "Repeat All"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:326
+msgid "Top Left"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:327
+msgid "Top Center"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:328
+msgid "Top Right"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:329
+msgid "Middle Left"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:330
+msgid "Middle Center"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:331
+msgid "Middle Right"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:332
+msgid "Bottom Left"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:333
+msgid "Bottom Center"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:334
+msgid "Bottom Right"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:346
+msgid "Scroll Normally"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:347
+msgid "Fixed in Place"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:419
+msgid "Normal"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:420
+msgid "Italic"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:421
+msgid "Bold"
+msgstr ""
+
+#: inc/includes/class-options-sanitize.php:422
+msgid "Bold Italic"
+msgstr ""
