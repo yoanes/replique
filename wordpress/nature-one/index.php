@@ -136,54 +136,7 @@ get_header();
                             </div><!-- feature-section --><div class="clear"></div>
                      </div><!-- middle-align --><div class="clear"></div>
             </section><div class="clear"></div>
-            <section style="background-color:#303030;">
-            		<div class="awesome-bg middle-align">
-                    	<?php if( of_get_option('recenttitle',true) != 1){ ?><h2><span><?php echo of_get_option('recenttitle',true); ?></span></h2><?php } else { ?><h2><span><?php _e('Recent Work','nature-one'); ?></span></h2><?php } ?>
-                        <?php if( of_get_option('recentfirst',true) == 1) { ?>
-                        	<?php for($n=1; $n<4;$n++) { ?>
-                        		<div class="work-thumb">
-                                            <a href="#"><img width="262px" height="189px" alt="Dummy Title" src="<?php echo get_template_directory_uri();?>/images/flower-thum.jpg" class="example-image"></a><a data-lightbox="example-1" href="<?php echo get_template_directory_uri();?>/images/flower-thum.jpg" class="example-image-link"><img src="<?php echo get_template_directory_uri(); ?>/images/zoom-icon.png"></a>
-                                       </div><!-- work-thumb -->
-                       	<?php } } else { ?>
-							<?php 
-                                if( of_get_option('recentfirst',false)) { 
-                                $recent = new WP_Query('page_id='.of_get_option('recentfirst'));  
-                                    while($recent->have_posts() ) : $recent->the_post(); ?>
-                                        <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large', true );
-                                              $url = $thumb['0']; ?>
-                                        <div class="work-thumb">
-                                            <a href="<?php the_permalink(); ?>"><img width="262px" height="189px" alt="<?php the_title(); ?>" src="<?php echo $url; ?>" class="example-image"></a><a data-lightbox="example-1" href="<?php echo $url; ?>" class="example-image-link"><img src="<?php echo get_template_directory_uri(); ?>/images/zoom-icon.png"></a>
-                                       </div><!-- work-thumb -->
-                                <?php	endwhile;
-							}
-						?>
-                        <?php 
-                                if( of_get_option('recentsecond',false)) { 
-                                $recent = new WP_Query('page_id='.of_get_option('recentsecond'));  
-                                    while($recent->have_posts() ) : $recent->the_post(); ?>
-                                        <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large', true );
-                                              $url = $thumb['0']; ?>
-                                        <div class="work-thumb">
-                                            <a href="<?php the_permalink(); ?>"><img width="262px" height="189px" alt="<?php the_title(); ?>" src="<?php echo $url; ?>" class="example-image"></a><a data-lightbox="example-1" href="<?php echo $url; ?>" class="example-image-link"><img src="<?php echo get_template_directory_uri(); ?>/images/zoom-icon.png"></a>
-                                       </div><!-- work-thumb -->
-                                <?php	endwhile;
-							}
-						?>
-                        <?php 
-                                if( of_get_option('recentthird',false)) { 
-                                $recent = new WP_Query('page_id='.of_get_option('recentthird'));  
-                                    while($recent->have_posts() ) : $recent->the_post(); ?>
-                                        <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large', true );
-                                              $url = $thumb['0']; ?>
-                                        <div class="work-thumb">
-                                            <a href="<?php the_permalink(); ?>"><img width="262px" height="189px" alt="<?php the_title(); ?>" src="<?php echo $url; ?>" class="example-image"></a><a data-lightbox="example-1" href="<?php echo $url; ?>" class="example-image-link"><img src="<?php echo get_template_directory_uri(); ?>/images/zoom-icon.png"></a>
-                                       </div><!-- work-thumb --><div class="clear"></div>
-                                <?php	endwhile;
-							}
-						}
-						?>
-                    </div><!-- awesome-bg --><div class="clear"></div>
-            </section><!-- section2 -->
+            <!-- section2 -->
             <section class="menu_page">
             	<div class="middle-align">
                 	<?php $blogpost = new WP_Query('showposts='.of_get_option('blogdisplay')); ?>
