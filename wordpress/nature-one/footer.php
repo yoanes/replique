@@ -24,7 +24,7 @@
 										}
 								 }; ?>
                 </div><!-- footer-column -->
-                <div class="footer-column" style="margin-right:0;"><h3><?php _e('Clients Testimonials','nature-one'); ?></h3>
+                <div class="footer-column" style="margin-right:0;"><h3><?php _e('Our Minister','nature-one'); ?></h3>
                 	<blockquote>
                     		<?php if(of_get_option('testtext',true) != 1){ 
 									echo esc_html(of_get_option('testtext', true));
