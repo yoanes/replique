@@ -25,13 +25,11 @@
 								 }; ?>
                 </div><!-- footer-column -->
                 <div class="footer-column" style="margin-right:0;"><h3><?php _e('X-Cells','nature-one'); ?></h3>
-                	<blockquote>
                     		<?php if(of_get_option('testtext',true) != 1){ 
 									echo esc_html(of_get_option('testtext', true));
 							} else { ?>
                             	<?php _e('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas ornare elit ut molestie. Phasellus posuere interdum tellus, sit amet interdum lectus rutrum at. Nunc suscipit erat ut eros consequat, at bibendum sapien convallis. Donec ut gravida velit. Curabitur non ultrices lorem. Quisque aliquet leo felis, vitae posuere purus blandit vitae.','nature-one'); ?>
                             <?php } ?>
-                    </blockquote>
                 </div><!-- footer-column --><div class="clear"></div>
             </div><!-- middle-align -->
         </div><!-- footer-top -->
