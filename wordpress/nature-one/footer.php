@@ -11,7 +11,7 @@
  <div id="footer">
  		<div class="footer-top">
         	<div class="middle-align">
-            	<div class="footer-column"><h3><?php _e('Our Ministers','nature-one'); ?></h3>
+            	<div class="footer-column"><h3><?php _e('ICM','nature-one'); ?></h3>
                 	<?php if( of_get_option('footertext', true) != '') 
 							{ 
 								if(of_get_option('footertext',true) == 1)
