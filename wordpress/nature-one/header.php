@@ -9,6 +9,8 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+<meta name="description" content="Indonesian interdenominational church in Australia" />
+<meta name="keywords" content="indonesian church, australia, melbourne, brisbane, jakarta, church, indonesia, australia, replique" />
 <meta name="msvalidate.01" content="CC5B3A495B5843E935EC383AD395920C" />
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width">
