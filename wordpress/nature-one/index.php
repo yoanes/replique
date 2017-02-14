@@ -145,7 +145,7 @@ get_header();
                 		<?php if( $blogpost->have_posts() ) : while( $blogpost->have_posts() ) : $blogpost->the_post(); ?>
                         	<?php $j++; ?>
                         		<div class="blog-box" <?php if($j%2==0) {?> style="float:right" <?php } ?>>
-                                		<div class="blog-meta"><?php echo get_the_time('j'); ?><br /><?php echo date('M'); ?></div><!-- blog-meta -->
+                                		<div class="blog-meta"><?php echo get_the_time('j'); ?><br /><?php echo get_the_time('M'); ?></div><!-- blog-meta -->
                                         <div class="blog-right"><h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                                         						<?php echo skt_natureone_content(25); ?>
                                                                 <a href="<?php esc_url(the_permalink()); ?>"><?php _e('Read More...','nature-one'); ?></a>
